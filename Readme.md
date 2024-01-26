@@ -25,13 +25,13 @@ c применением паттерна Page Object.
 ---
 ### 🖨️ Запуск Allure после окончания теста
 <p align="center">
-<img src="images/Allure.png" alt="Allure report" width="1000" height="400">
+<img src="images/Allure.png" alt="Allure report" width="500" height="400">
 </p>
 
 ### 🖨️ Главная страница отчета
 
 <p align="center">
-<img src="images/Alluremain.png" alt="Allure report" width="1000" height="400">
+<img src="images/alluremain.png" alt="Allure report" width="1000" height="400">
 </p>
 
 
