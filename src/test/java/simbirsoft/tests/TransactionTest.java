@@ -7,6 +7,7 @@ import simbirsoft.pages.AccountPage;
 import simbirsoft.pages.CustomerPage;
 import simbirsoft.pages.LoginPage;
 import simbirsoft.pages.TransactionPage;
+import simbirsoft.pages.components.CheckResultComponent;
 import simbirsoft.utils.fibonacciSum.FibonacciSum;
 
 @DisplayName("Testing XYZ Bank Transactions")
@@ -16,11 +17,12 @@ public class TransactionTest extends BaseTest {
     @Severity(SeverityLevel.BLOCKER)
     @Link(name = "Xyz Bank", url = "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login")
     @Issue("USER-XYZ")
-    public void transactionsUserTest() throws InterruptedException {
+    public void transactionsUserTest() {
 
         AccountPage accountPage = new AccountPage(driver);
         CustomerPage customerPage = new CustomerPage(driver);
         LoginPage loginPage = new LoginPage(driver);
+        CheckResultComponent tableResulComponent = new CheckResultComponent(driver);
         TransactionPage transactionPage = new TransactionPage(driver);
         FibonacciSum fibonacciSum = new FibonacciSum();
 
@@ -29,23 +31,20 @@ public class TransactionTest extends BaseTest {
         customerPage.selectPotterUser();
         customerPage.clickLoginButton();
         accountPage.clickDepositButton();
-        Thread.sleep(1000);
         accountPage.enterDepositAmount(fibonacciSum.calculateFibonacciSum());
         accountPage.confirmDeposit();
-        Thread.sleep(1000);
         accountPage.clickWithdrawButton();
-        Thread.sleep(1000);
         accountPage.enterWithdrawAmount(fibonacciSum.calculateFibonacciSum());
-        Thread.sleep(1000);
         accountPage.confirmWithdrawal();
         accountPage.checkBalance("0");
-        Thread.sleep(2000);
         accountPage.clickTransactionsButton();
 
-        transactionPage.checkTransactions(String.valueOf(fibonacciSum.calculateFibonacciSum()), "Credit");
-        transactionPage.checkTransactions(String.valueOf(fibonacciSum.calculateFibonacciSum()), "Debit");
+        tableResulComponent.checkTransactions(String.valueOf
+                (fibonacciSum.calculateFibonacciSum()), "Credit");
+        tableResulComponent.checkTransactions(String.valueOf
+                (fibonacciSum.calculateFibonacciSum()), "Debit");
 
-        transactionPage.performTransactionActions();
+        transactionPage.performTransactionActions("transactions.csv");
 
     }
 }

@@ -32,6 +32,7 @@ public abstract class BaseTest {
         }
         driver.manage().window().maximize();
         driver.get(BaseUrl);
+
     }
 
     @BeforeEach
@@ -41,7 +42,7 @@ public abstract class BaseTest {
     }
     @AfterEach
     void addAttachments() {
-        Attach.attachCSVFile();
+        Attach.attachCSVFile("transactions.csv");
         driver.close();
         driver.quit();
     }

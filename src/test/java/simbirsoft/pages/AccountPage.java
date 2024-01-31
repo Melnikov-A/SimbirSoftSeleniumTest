@@ -3,8 +3,11 @@ package simbirsoft.pages;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -52,7 +55,10 @@ public class AccountPage {
 
     @Step("Confirm deposit")
     public void confirmDeposit() {
-        depositConfirmButton.click();
+        new Actions(driver)
+                .pause(Duration.ofSeconds(1))
+                .click(depositConfirmButton)
+                .perform();
     }
 
     @Step("Click on 'Withdraw' button")
@@ -67,7 +73,11 @@ public class AccountPage {
 
     @Step("Confirm withdrawal")
     public void confirmWithdrawal() {
-        withdrawConfirmButton.click();
+        new Actions(driver)
+                .pause(Duration.ofSeconds(1))
+                .click(withdrawConfirmButton)
+                .perform();
+
     }
 
     @Step("Check user balance")
@@ -78,7 +88,10 @@ public class AccountPage {
 
     @Step("Click on 'Transactions' button")
     public void clickTransactionsButton() {
-        transactionsButton.click();
+        new Actions(driver)
+                .pause(Duration.ofSeconds(2))
+                .click(transactionsButton)
+                .perform();
+
     }
 }
-

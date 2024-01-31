@@ -8,11 +8,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Attach {
-    public static void attachCSVFile() {
-        File csvFile = new File("src/test/resources/transactions.csv");
+    public static void attachCSVFile(String fileName) {
+        File csvFile = new File("src/test/resources/" + fileName);
         try {
             String content = new String(Files.readAllBytes(Paths.get(csvFile.getPath())));
-            Allure.addAttachment("transactions.csv", "text/csv", content);
+            Allure.addAttachment(fileName, "text/csv", content);
         } catch (IOException e) {
             e.printStackTrace();
         }
